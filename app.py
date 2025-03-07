@@ -34,8 +34,9 @@ def main():
         api_key = st.text_input("Groq API Key:", type="password")
         if api_key:
             try:
-                # Test the API key by creating a client
-                test_client = Groq(api_key=api_key)
+                # Test the API key by creating a client with minimal configuration
+                test_client = Groq()
+                test_client.api_key = api_key
                 st.session_state.client = test_client
                 st.session_state.api_key = api_key
                 st.success("API key validated successfully!")
