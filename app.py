@@ -59,7 +59,7 @@ def main():
                 st.session_state.client = result
                 st.session_state.api_key = api_key
                 st.success("API key validated successfully!")
-                st.experimental_rerun()  # Force a rerun to show the chat interface
+                st.rerun()  # Force a rerun to show the chat interface
             else:
                 st.error(f"Invalid API key: {result}")
                 return
@@ -94,7 +94,7 @@ def main():
                         st.session_state.client = None
                         if "GROQ_API_KEY" in os.environ:
                             del os.environ["GROQ_API_KEY"]
-                        st.experimental_rerun()
+                        st.rerun()
 
         # Optional: Display conversation history
         if st.checkbox("Show Conversation History"):
@@ -112,7 +112,7 @@ def main():
             st.session_state.conversation_history = []
             if "GROQ_API_KEY" in os.environ:
                 del os.environ["GROQ_API_KEY"]
-            st.experimental_rerun()
+            st.rerun()
 
 if __name__ == "__main__":
     main()
